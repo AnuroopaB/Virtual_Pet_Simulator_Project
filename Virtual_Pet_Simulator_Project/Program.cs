@@ -31,18 +31,27 @@ namespace CSharpAssignment
                 Console.Write($"\nCongrats, Your new buddy is a {a}.\n\nWhat would you like to call your new friend? ");
                 String Name = Console.ReadLine();
                 Console.WriteLine($"\nWelcome dear {Name}, we are so happy to be with you!\n");
-                int Hunger = 5,Happiness  =5,Health = 5;
+                int Hunger = 10, Happiness  =2, Health = 3;
+                Console.WriteLine($"Activities with {Name}:");
                 Actionmenu:
-                Console.Write($"Activities with {Name}:\n1. Feed {Name}\n2. Play with {Name}\n3. Let {Name} rest\n4. Check {Name}'s status\n5. Say bye to {Name}\n\nSelect the activity: ");
+                Console.Write($"1. Feed {Name}\n2. Play with {Name}\n3. Let {Name} rest\n4. Check {Name}'s status\n5. Say bye to {Name}\n\nSelect the activity: ");
                 int activity = int.Parse(Console.ReadLine());
                 if (activity < 5)
                 {
+                    if (Health > 10)
+                    {
+                        Health = 10;
+                    }
+                    if (Happiness > 10)
+                    {
+                        Happiness = 10;
+                    }
                     switch (activity)
                     {
                         case 1:
                             Console.WriteLine($"\nYou fed {Name}, {Name}'s hunger decreased, health increased.\n");
-                            Hunger = Hunger-1;
-                            Health = Health+1;
+                            Hunger = Hunger - 1;
+                            Health = Health + 1;
                             break;
                         case 2:
                             Console.WriteLine($"\nYou played with {Name}, {Name}'s happiness increased, health decreased.\n");
@@ -58,7 +67,47 @@ namespace CSharpAssignment
                             Console.WriteLine($"\nStatus of {Name}:\nHunger : {Hunger}\nHappiness : {Happiness}\nHealth : {Health}\n");
                             break;
                     }
-                    goto Actionmenu;
+                    if (Hunger < 1)
+                    {
+                        Hunger = 1;
+                    }
+                    if(Hunger >=10 || Happiness <= 1 || Health <= 1)
+                    {
+                        if (Hunger > 10 || Happiness < 1 || Health < 1)
+                        {
+                            Console.WriteLine($"{Name} is no more :(");
+                            Console.WriteLine($"\nBye, bye!!!");
+                        }
+                        else
+                        {
+                            if (Hunger == 10)
+                            {
+                                Console.WriteLine($"Warning!!! {Name} is extremely hungry, please feed him.");
+                            }
+                            if (Health == 1)
+                            {
+                                Console.WriteLine($"Warning!!! {Name} is not at all healthy, let him take rest.");
+                            }
+                            if (Happiness == 1)
+                            {
+                                Console.WriteLine($"Warning!!! {Name} is upset, play with him.");
+                            }
+                            goto Actionmenu;
+                        }
+                    }
+                    else
+                    {
+                        Console.Write($"Do you like to do any other activity with {Name} (Yes/No)? ");
+                        String UserResponse = Console.ReadLine();
+                        if (UserResponse.ToLower() == "yes")
+                        {
+                            goto Actionmenu;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\nBye, bye!!!");
+                        }
+                    }
                 }
                 else
                 {
