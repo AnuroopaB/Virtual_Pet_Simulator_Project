@@ -77,6 +77,24 @@ namespace CSharpAssignment
 							Console.WriteLine($"\nStatus of {Name}:\nHunger : {Hunger}\nHappiness : {Happiness}\nHealth : {Health}");
 							break;
 					}
+					if (Health == 1)
+					{
+						Console.Write($"{Name} is no more :( . ");
+						if (activity == 2)
+						{
+							Console.Write($"His health went down due to starvation. ");
+						}
+						else if (activity == 3)
+						{
+							Console.Write($"His health went down due to depression. ");
+						}
+						else
+						{
+							Console.Write($"His health went down. ");
+						}
+						Console.WriteLine($"You should have been more careful!\nBye, bye!!!");
+						return;
+					}
 					if (Hunger < 1)
 					{
 						Hunger = 1;
