@@ -47,15 +47,31 @@ namespace CSharpAssignment
 							//Happiness -= 1;
 							break;
 						case 2:
-							Happiness += 1;
-							Hunger += 1;
-							Console.WriteLine($"\nYou played with {Name}, {Name}'s happiness increased, hunger increased.");
+							if (Hunger == 10)
+							{
+								Console.WriteLine($"\nWarning!!! {Name} has send you a message \"I cannot play when I am starving\".");
+								Health -= 1;
+							}
+							else
+							{
+								Happiness += 1;
+								Hunger += 1;
+								Console.WriteLine($"\nYou played with {Name}, {Name}'s happiness increased, hunger increased.");
+							}
 							break;
 						case 3:
-							Happiness -= 1;
-							Health += 1;
-							Hunger += 1;
-							Console.WriteLine($"\n{Name} is resting, {Name}'s happiness decreased, health increased.");
+							if (Happiness == 1)
+							{
+								Console.WriteLine($"\nWarning!!! {Name} has send you a message \"I cannot rest when I am depressed\".");
+								Health -= 1;
+							}
+							else
+							{
+								Happiness -= 1;
+								Health += 1;
+								Hunger += 1;
+								Console.WriteLine($"\n{Name} is resting, {Name}'s happiness decreased, health increased.");
+							}
 							break;
 						case 4:
 							Console.WriteLine($"\nStatus of {Name}:\nHunger : {Hunger}\nHappiness : {Happiness}\nHealth : {Health}");
