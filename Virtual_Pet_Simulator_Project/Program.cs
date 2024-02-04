@@ -31,7 +31,7 @@ namespace CSharpAssignment
 				Console.Write($"\nCongrats, Your new buddy is a {a}.\n\nWhat would you like to call your new friend? ");
 				String Name = Console.ReadLine();
 				Console.WriteLine($"\nWelcome dear {Name}, we are so happy to be with you!\n");
-				int Hunger = 9, Happiness  =2, Health = 3;
+				int Hunger = 9, Happiness  =2, Health = 3, hours = 0;
 				Console.Write($"Activities with {Name}:");
 				Actionmenu:
 				Console.Write($"\n1. Feed {Name}\n2. Play with {Name}\n3. Let {Name} rest\n4. Check {Name}'s status\n5. Say bye to {Name}\n\nSelect the activity: ");
@@ -45,6 +45,7 @@ namespace CSharpAssignment
 							Hunger -= 1;
 							Health += 1;
 							//Happiness -= 1;
+							hours += 1;
 							break;
 						case 2:
 							if (Hunger == 10)
@@ -56,8 +57,9 @@ namespace CSharpAssignment
 							{
 								Happiness += 1;
 								Hunger += 1;
-								Console.WriteLine($"\nYou played with {Name}, {Name}'s happiness increased, hunger increased.");
-							}
+                                hours += 1;
+                                Console.WriteLine($"\nYou played with {Name}, {Name}'s happiness increased, hunger increased.");
+                            }
 							break;
 						case 3:
 							if (Happiness == 1)
@@ -70,7 +72,8 @@ namespace CSharpAssignment
 								Happiness -= 1;
 								Health += 1;
 								Hunger += 1;
-								Console.WriteLine($"\n{Name} is resting, {Name}'s happiness decreased, health increased.");
+                                hours += 1;
+                                Console.WriteLine($"\n{Name} is resting, {Name}'s happiness decreased, health increased.");
 							}
 							break;
 						case 4:
@@ -92,7 +95,7 @@ namespace CSharpAssignment
 						{
 							Console.Write($"His health went down. ");
 						}
-						Console.WriteLine($"You should have been more careful!\nBye, bye!!!");
+						Console.WriteLine($"You should have been more careful!\nThankyou for successfully spending {hours} hours with {Name}, Bye...bye!!!");
 						return;
 					}
 					if (Hunger < 1)
@@ -148,7 +151,7 @@ namespace CSharpAssignment
 						}
 						else
 						{
-							Console.WriteLine($"\nBye, bye!!!");
+							Console.WriteLine($"\nThankyou for successfully spending {hours} hours with {Name}, Bye...bye!!!");
 						}
 					}
 				}
@@ -156,7 +159,7 @@ namespace CSharpAssignment
 				{
 					if (activity == 5)
 					{
-						Console.WriteLine($"\nBye, bye!!!");
+						Console.WriteLine($"\nThankyou for successfully spending {hours} hours with {Name}, Bye...bye!!!");
 					}
 					else
 					{
