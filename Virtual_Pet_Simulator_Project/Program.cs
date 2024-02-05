@@ -50,29 +50,41 @@
 							Health += 1;
 							Happiness -= 1;
 							Hours += 1;
+                            //if pet became depressed
+                            if (Happiness <= 1)
+							{
+								Health -= 1;
+							}
 							break;
 						case 2:
-                            //Play with pet
-                            if (Hunger == 10)
+							//Play with pet
+							//If pet is already starving
+							if (Hunger == 10)
 							{
 								Console.WriteLine($"\nWarning!!! {petName} has send you a message \"I cannot play when I am starving\".");
 								Health -= 1;
-                                if (Happiness == 1)
+								if (Happiness == 1)
 								{
-                                    Health -= 1;
-                                }
-                            }
+									Health -= 1;
+								}
+							}
 							else
 							{
 								Happiness += 1;
 								Hunger += 1;
-                                Hours += 1;
-                                Console.WriteLine($"\nYou played with {petName}, {petName}'s happiness increased, hunger increased.");
-                            }
+								Hours += 1;
+								Console.WriteLine($"\nYou played with {petName}, {petName}'s happiness increased, hunger increased.");
+                                //if pet is starving
+                                if (Hunger >= 10)
+								{
+									Health -= 1;
+								}
+							}
 							break;
 						case 3:
-							//Rest mode
-							if (Happiness == 1)
+                            //Rest mode
+                            //if pet is already depressed
+                            if (Happiness == 1)
 							{
 								Console.WriteLine($"\nWarning!!! {petName} has send you a message \"I cannot rest when I am depressed\".");
 								Health -= 1;
@@ -88,7 +100,16 @@
 								Hunger += 1;
 								Hours += 1;
 								Console.WriteLine($"\n{petName} is resting, {petName}'s happiness decreased, health increased.");
-							}
+								//if pet became depressed or starving
+								if (Happiness <= 1)
+								{
+									Health -= 1;
+                                }
+                                if (Hunger >= 10)
+                                {
+									Health -= 1;
+                                }
+                            }
 							break;
 						case 4:
                             //Check status of pet
