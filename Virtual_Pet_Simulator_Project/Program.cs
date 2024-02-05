@@ -32,7 +32,7 @@
 				//Naming pet
 				String petName = Console.ReadLine();
 				Console.WriteLine($"\nWelcome dear {petName}, we are so happy to be with you!\n");
-				int Hunger = 6, Happiness = 5, Health =5, Hours = 0;
+				int Hunger = 6, Happiness = 5, Health =8, Hours = 0;
 				//Activities with pet
 				Console.Write($"Activities with {petName}:\n--------------------");
 				Activitymenu:
@@ -141,12 +141,16 @@
 						Hunger = 1;
 						Console.WriteLine($"\n{petName} is feeling full!");
 					}
-					if (Health >= 10)
+					if (Health >= 10 && Hunger < 8 && Happiness > 3)
 					{
 						Health = 10;
 						Console.WriteLine($"\n{petName} is super healthy!");
 					}
-					if (Happiness >= 10)
+                    if (Health >= 10)
+                    {
+                        Health = 10;
+                    }
+                    if (Happiness >= 10)
 					{
 						Happiness = 10;
 						Console.WriteLine($"\n{petName} is very happy!");
